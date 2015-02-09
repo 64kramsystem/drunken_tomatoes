@@ -1,0 +1,11 @@
+<h1>Movies#index</h1>
+
+<table>
+  <% @movies.each do | movie | %>
+  <tr class="<%= cycle( 'list_line_odd', 'list_line_even' ) %>">
+    <td>
+      <%= h( movie.title ) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
