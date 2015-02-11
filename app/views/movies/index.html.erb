@@ -1,14 +1,15 @@
 <h1>Movies#index</h1>
 
-<table>
-  <% @movies.each do | movie | %>
+<table width="100%" cellpadding="5" border="1">
+  <% @movies.each_slice( 3 ) do | movies_row | %>
   <tr>
-    <td>
-      <%= h( movie.title ) %>
-    </td>
-    <td>
-      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
-    </td>
+    <% movies_row.each do | movie | %>
+	    <td width="33%" align="center" valign="center">
+	      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
+	      <br/>
+	      <%= h( movie.title ) %>
+	    </td>
+    <% end %>
   </tr>
   <% end %>
 </table>
