@@ -2,9 +2,12 @@
 
 <table>
   <% @movies.each do | movie | %>
-  <tr class="<%= cycle( 'list_line_odd', 'list_line_even' ) %>">
+  <tr>
     <td>
       <%= h( movie.title ) %>
+    </td>
+    <td>
+      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
     </td>
   </tr>
   <% end %>
