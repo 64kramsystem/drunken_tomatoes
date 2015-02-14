@@ -1,6 +1,5 @@
 == TODO
 
-- sorting (REQ. listbox)
 - min/max year
 - icons, noactions
 - icons, actions ( REQ. ajax)

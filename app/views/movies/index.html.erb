@@ -2,10 +2,24 @@
 
 <p align="center">
   <%=
+    field_options = @genre_id ? { selected: @genre_id, include_blank: '(No genre)' } : { prompt: '(No genre)' }
+
     collection_select(
       :movie, :genre_id, @genres, :id, :name,
-      @genre_id ? { selected: @genre_id, include_blank: '(No genre)' } : { prompt: '(No genre)' },
-      { onchange: "document.location='/movies?genre_id='+this.value" }
+      field_options,
+      { onchange: "document.location = '/movies?genre_id=' + this.value + '&sorting_field=' + sorting_field.value" }
+    )
+  %>
+  <%#
+    In a strictly secure environment, we wouldn't give away a "field", because an attacker
+    would get pieces of the db structure. In this context, it doesn't matter.
+  %>
+  <%=
+    field_options = @sorting_field ? { include_blank: '(No sorting)' } : { prompt: '(No sorting)' }
+
+    select_tag(
+      :sorting_field, options_for_select( @sort_mapping, @sorting_field ),
+      field_options.merge( onchange: "document.location = '/movies?genre_id=' + movie_genre_id.value + '&sorting_field=' + this.value" )
     )
   %>
 </p>

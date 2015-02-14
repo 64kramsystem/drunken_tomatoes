@@ -5,16 +5,33 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Checks the parameter.
-  # Nil is allowed; an empty string is considered nil.
+  # Nil and empty string are allowed, and return nil.
   #
   def int_param( param_name )
-    case params[ param_name ]
+    param_value = params[ param_name ]
+
+    case param_value
     when /\A\d+\Z/
-      params[ param_name ].to_i
+      param_value.to_i
     when nil, ""
       nil
     else
-      raise "Invalid #{ param_name } parameter!"
+      raise "Invalid '#{ param_name }' parameter value!"
+    end
+  end
+
+  # Checks the parameter from a whitelist.
+  # Nil and empty string are allowed, and return nil.
+  #
+  def whitelist_param( param_name, whitelist )
+    param_value = params[ param_name ]
+
+    if param_value.to_s == ""
+      nil
+    elsif whitelist.include?( param_value )
+      param_value
+    else
+      raise "Invalid '#{ param_name }' parameter value!"
     end
   end
 
