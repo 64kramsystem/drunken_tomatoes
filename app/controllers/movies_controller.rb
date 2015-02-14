@@ -3,20 +3,13 @@ class MoviesController < ApplicationController
   MOVIES_PER_PAGE = 30
 
   def index
-    @movies = Movie.page( param_page ).per( MOVIES_PER_PAGE )
-  end
+    page      = int_param( :page ) || 1
+    @genre_id = int_param( :genre_id )
 
-  private
+    @movies = Movie.page( page ).per( MOVIES_PER_PAGE )
+    @movies = @movies.joins( :genres ).where( genres: { id: @genre_id } ) if @genre_id
 
-  def param_page
-    case params[ :page ]
-    when nil
-      1
-    when /\A\d+\Z/
-      params[ :page ].to_i
-    else
-      raise "Invalid page parameter!"
-    end
+    @genres = Genre.all
   end
 
 end

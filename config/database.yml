@@ -2,7 +2,7 @@ default: &default
   adapter: mysql2
   username: root
   password: pizza
-  socket: /home/mysql_data/mysqld.sock
+  socket: /home/public/mysql_data/mysqld.sock
 
 development:
   <<: *default

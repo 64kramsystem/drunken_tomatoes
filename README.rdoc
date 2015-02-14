@@ -1,8 +1,7 @@
 == TODO
 
-- filtering
-- icons (noactions)
-- icons (actions)
-- sorting
+- icons, noactions
+- sorting (REQ. listbox)
+- icons, actions ( REQ. ajax)
 - s/css
 - pagination: styling
