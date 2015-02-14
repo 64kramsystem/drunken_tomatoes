@@ -4,4 +4,4 @@
 - icons, noactions (rating, watched (check), watchlist (eye), ignore (cross), steff movie (star))
 - icons, actions ( REQ. ajax)
 - s/css
-- pagination: styling
+- other styling
