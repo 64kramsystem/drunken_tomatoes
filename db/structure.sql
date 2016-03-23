@@ -91,9 +91,9 @@ CREATE TABLE `movies` (
   `year` year(4) NOT NULL,
   `updated_on` datetime NOT NULL,
   `url_path` varchar(128) NOT NULL,
-  `watched` tinyint(3) unsigned NOT NULL,
-  `ignore` tinyint(3) unsigned NOT NULL,
-  `watchlist` tinyint(3) unsigned NOT NULL,
+  `watched` tinyint(1) NOT NULL DEFAULT '0',
+  `ignore` tinyint(1) NOT NULL DEFAULT '0',
+  `watchlist` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `url_path` (`url_path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -113,6 +113,19 @@ CREATE TABLE `reviews` (
   PRIMARY KEY (`id`),
   KEY `movie_id` (`movie_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53085 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,3 +155,5 @@ CREATE TABLE `trailers` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2015-02-08 21:01:35
+INSERT INTO schema_migrations (version) VALUES ('20160323221700');
+
