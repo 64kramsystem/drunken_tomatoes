@@ -1,7 +1,0 @@
-== TODO
-
-- min/max year
-- icons, noactions (rating, watched (check), watchlist (eye), ignore (cross), steff movie (star))
-- icons, actions ( REQ. ajax)
-- s/css
-- other styling
