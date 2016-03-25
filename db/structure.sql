@@ -16,6 +16,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `critics`
+--
+
+DROP TABLE IF EXISTS `critics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `critics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url_path` varchar(60) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_critics_on_url_path` (`url_path`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `directors`
 --
 
@@ -110,8 +126,10 @@ CREATE TABLE `reviews` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `link` mediumtext NOT NULL,
   `movie_id` int(10) unsigned NOT NULL,
+  `critic_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `movie_id` (`movie_id`)
+  KEY `movie_id` (`movie_id`),
+  KEY `index_reviews_on_critic_id` (`critic_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53085 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,4 +174,6 @@ CREATE TABLE `trailers` (
 
 -- Dump completed on 2015-02-08 21:01:35
 INSERT INTO schema_migrations (version) VALUES ('20160323221700');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325212940');
 
