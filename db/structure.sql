@@ -103,7 +103,7 @@ CREATE TABLE `movies` (
   `title` varchar(255) NOT NULL,
   `synopsis` text NOT NULL,
   `rating` tinyint(3) unsigned NOT NULL,
-  `poster` blob NOT NULL,
+  `poster` mediumblob NOT NULL,
   `year` year(4) NOT NULL,
   `updated_on` datetime NOT NULL,
   `url_path` varchar(128) NOT NULL,
@@ -176,4 +176,6 @@ CREATE TABLE `trailers` (
 INSERT INTO schema_migrations (version) VALUES ('20160323221700');
 
 INSERT INTO schema_migrations (version) VALUES ('20160325212940');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325214813');
 
