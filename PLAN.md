@@ -1,5 +1,3 @@
-- next_page (and presumably previous) link loses the genre
-- previous page points to the next
 - min/max year
 - icons, noactions (rating, watched (check), watchlist (eye), ignore (cross))
 - icons, actions (REQ. ajax)
