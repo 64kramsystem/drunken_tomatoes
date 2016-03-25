@@ -1,4 +1,6 @@
+- default sorting/optins, in database
 - min/max year
 - icons, noactions (rating, watched (check), watchlist (eye), ignore (cross))
 - icons, actions (REQ. ajax)
 - other styling
+- convert page linking to :paginate (how to center?)
