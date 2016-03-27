@@ -1,6 +1,4 @@
-- default sorting/optins, in database
+- render annotation link as partial; the json content can be generated using `render_to_string('messages/_attachment', layout: false, locals: => { :message => @message }`
+- store default sorting?/optins?/filtering?, in database
 - min/max year
-- icons, noactions (rating, watched (check), watchlist (eye), ignore (cross))
-- icons, actions (REQ. ajax)
-- other styling
 - convert page linking to :paginate (how to center?)

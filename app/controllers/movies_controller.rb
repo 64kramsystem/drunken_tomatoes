@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
 
+  include MoviesHelper
+
   MOVIES_PER_PAGE = 30
 
   SORT_MAPPING = {
@@ -7,7 +9,7 @@ class MoviesController < ApplicationController
     'Rating'       => 'rating',
   }
 
-  MOVIE_ANNOTATIONS = %w[watched watchlist ignore]
+  ANNOTATIONS = %w[watched watchlist ignore]
 
   def index
     page           = int_param( :page ) || 1
@@ -21,7 +23,28 @@ class MoviesController < ApplicationController
     @genres = Genre.all
 
     @sort_mapping = SORT_MAPPING.clone
-    @movie_annotations = MOVIE_ANNOTATIONS
+    @annotations = ANNOTATIONS
+  end
+
+  def update
+    respond_to do |format|
+      format.js do
+        ANNOTATIONS.each do |annotation|
+          if params.has_key?(annotation) && %[true false].include?(params[annotation])
+            movie = Movie.find(params[:id])
+            annotation_value = params[annotation] == 'true'
+
+            movie.update_attributes!(annotation => annotation_value)
+
+            render json: { id: params[:id], annotation: annotation, link: annotation_link(movie, annotation, annotation_value) }, content_type: 'text/json'
+
+            return
+          end
+        end
+
+        head :ok
+      end
+    end
   end
 
 end
