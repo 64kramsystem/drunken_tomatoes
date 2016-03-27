@@ -29,6 +29,13 @@
   <tr>
     <% movies_row.each do | movie | %>
 	    <td width="33%" align="center" valign="center">
+        <% @movie_annotations.each do | movie_annotation | %>
+        <%=
+          icon_name = "#{ movie_annotation }#{ '_unchecked' if ! movie.attributes[movie_annotation] }.png"
+          image_tag( icon_name, size: "16" )
+        %>
+        <% end %>
+        <br/>
 	      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
 	      <br/>
 	      <%= h( movie.title ) %>

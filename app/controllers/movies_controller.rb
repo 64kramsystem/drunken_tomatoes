@@ -7,6 +7,8 @@ class MoviesController < ApplicationController
     'Rating'       => 'rating',
   }
 
+  MOVIE_ANNOTATIONS = %w[watched watchlist ignore]
+
   def index
     page           = int_param( :page ) || 1
     @genre_id      = int_param( :genre_id )
@@ -19,6 +21,7 @@ class MoviesController < ApplicationController
     @genres = Genre.all
 
     @sort_mapping = SORT_MAPPING.clone
+    @movie_annotations = MOVIE_ANNOTATIONS
   end
 
 end
