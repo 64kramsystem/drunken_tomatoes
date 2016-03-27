@@ -1,4 +1,5 @@
 - render annotation link as partial; the json content can be generated using `render_to_string('messages/_attachment', layout: false, locals: => { :message => @message }`
 - store default sorting?/optins?/filtering?, in database
 - min/max year
+- convert structure.sql to schema.rb
 - convert page linking to :paginate (how to center?)
