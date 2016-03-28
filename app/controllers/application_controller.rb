@@ -20,6 +20,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def boolean_param( param_name )
+    param_value = params[ param_name ]
+
+    case param_value
+    when 'true'
+      true
+    when 'false'
+      false
+    when nil, ""
+      nil
+    else
+      raise "Invalid '#{ param_name }' parameter value!"
+    end
+  end
+
   # Checks the parameter from a whitelist.
   # Nil and empty string are allowed, and return nil.
   #

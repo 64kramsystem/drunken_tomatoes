@@ -36,6 +36,10 @@
       { onchange: js_on_change_link }
     )
   %>
+  Watchable:
+  <%=
+    check_box( :movie, :watchable, { onchange: js_on_change_link, checked: @watchable } )
+  %>
 </p>
 
 <table width="100%" cellpadding="5" border="1">

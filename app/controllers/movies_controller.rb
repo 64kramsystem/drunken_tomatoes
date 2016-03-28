@@ -19,11 +19,15 @@ class MoviesController < ApplicationController
     @sorting_field = whitelist_param( :sorting_field, SORT_MAPPING.values )
     @min_rating    = int_param( :min_rating )
     @min_year      = int_param( :min_year )
+    @watchable     = boolean_param( :watchable ) || boolean_param( :watchable ).nil?
 
+    # Note that if `watchable` is selected, we first sort by `watchlist` attribute.
+    #
     @movies = Movie.page( page ).per( MOVIES_PER_PAGE )
     @movies = @movies.joins( :genres ).where( genres: { id: @genre_id } ) if @genre_id
     @movies = @movies.where( 'rating >= ?', @min_rating ) if @min_rating
     @movies = @movies.where( 'year >= ?', @min_year ) if @min_year
+    @movies = @movies.where( watched: false, ignore: false ).order('watchlist DESC') if @watchable
     @movies = @movies.order( "#{ @sorting_field } DESC" ) if @sorting_field
 
     @genres = Genre.all
