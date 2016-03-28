@@ -7,7 +7,7 @@
     collection_select(
       :movie, :genre_id, @genres, :id, :name,
       genre_options,
-      { onchange: "document.location = '/movies?genre_id=' + this.value + '&sorting_field=' + sorting_field.value" }
+      { onchange: js_on_change_link }
     )
   %>
   <%=
@@ -15,7 +15,7 @@
 
     select_tag(
       :sorting_field, options_for_select( @sort_mapping, @sorting_field ),
-      sorting_options.merge( onchange: "document.location = '/movies?genre_id=' + movie_genre_id.value + '&sorting_field=' + this.value" )
+      sorting_options.merge( onchange: js_on_change_link )
     )
   %>
 </p>
