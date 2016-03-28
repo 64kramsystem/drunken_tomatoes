@@ -42,25 +42,36 @@
   %>
 </p>
 
-<table width="100%" cellpadding="5" border="1">
+<table width="100%" border="1">
   <% @movies.each_slice( 3 ) do | movies_row | %>
+    <% movies_row.each do | movie | %>
+      <td width="33%">
+        <table width="100%">
+          <tr>
+            <td width="33%" style="line-height:12px">
+              <small><%= h(movie.genres.map(&:name).join(', ')) %></small>
+            </td>
+            <td width="33%" align="center">
+              <big><b><font color="red"><%= movie.rating %></font></b></big>
+            </td>
+            <td width="33%" align="center">
+              <% @annotations.each do | annotation | %>
+              <span id="<%= annotation %>-<%= movie.id %>">
+                <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
+              </span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    <% end %>
+  </tr>
   <tr>
     <% movies_row.each do | movie | %>
 	    <td width="33%" align="center" valign="center">
-        <table>
-          <tr>
-            <% @annotations.each do | annotation | %>
-            <td>
-            <div id="<%= annotation %>-<%= movie.id %>">
-              <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
-            </div>
-            </td>
-            <% end %>
-          </tr>
-        </table>
-	      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
-	      <br/>
-	      <%= "#{ h( movie.title ) } [#{ h( movie.year ) }]" %>
+        <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
+        <br/>
+        <big><b><%= "#{ h( movie.title ) } [#{ h( movie.year ) }]" %></b></big>
 	    </td>
     <% end %>
   </tr>

@@ -1,7 +1,6 @@
 FUNCTIONAL
 ----------
 
-- add rating visual cue
 - add quick trailer view
 - add movie informations view
 
