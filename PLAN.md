@@ -8,7 +8,6 @@ FUNCTIONAL
 CODE
 ----
 
-- movie movie posters to separate table
 - add foreign keys
 - `js_on_change_link` should be a js function, I suppose
 

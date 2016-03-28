@@ -48,19 +48,22 @@ ActiveRecord::Schema.define(version: 20160325214813) do
   add_index "genres_movies", ["movie_id", "genre_id"], name: "movie_id", unique: true, using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",      limit: 255,                      null: false
-    t.text     "synopsis",   limit: 65535,                    null: false
-    t.integer  "rating",     limit: 1,                        null: false
-    t.binary   "poster",     limit: 16777215,                 null: false
-    t.integer  "year",       limit: 4,                        null: false
-    t.datetime "updated_on",                                  null: false
-    t.string   "url_path",   limit: 128,                      null: false
-    t.boolean  "watched",                     default: false, null: false
-    t.boolean  "ignore",                      default: false, null: false
-    t.boolean  "watchlist",                   default: false, null: false
+    t.string   "title",      limit: 255,                   null: false
+    t.text     "synopsis",   limit: 65535,                 null: false
+    t.integer  "rating",     limit: 1,                     null: false
+    t.integer  "year",       limit: 4,                     null: false
+    t.datetime "updated_on",                               null: false
+    t.string   "url_path",   limit: 128,                   null: false
+    t.boolean  "watched",                  default: false, null: false
+    t.boolean  "ignore",                   default: false, null: false
+    t.boolean  "watchlist",                default: false, null: false
   end
 
   add_index "movies", ["url_path"], name: "url_path", unique: true, using: :btree
+
+  create_table "posters", force: :cascade do |t|
+    t.binary "data", limit: 16777215, null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.text    "link",      limit: 16777215, null: false
