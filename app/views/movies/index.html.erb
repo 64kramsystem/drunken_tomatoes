@@ -18,6 +18,15 @@
       sorting_options.merge( onchange: js_on_change_link )
     )
   %>
+  <%=
+    min_rating_options = @min_rating ? { selected: @min_rating, include_blank: '(No min rating)' } : { prompt: '(No min rating)' }
+
+    select(
+      :movie, :min_rating, @ratings,
+      min_rating_options,
+      { onchange: js_on_change_link }
+    )
+  %>
 </p>
 
 <table width="100%" cellpadding="5" border="1">
