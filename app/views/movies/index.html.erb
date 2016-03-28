@@ -64,5 +64,5 @@
 </table>
 
 <p align="center">
-  <%= link_to_previous_page @movies, 'Previous page', params: { genre_id: @genre_id } %> <%= link_to_next_page @movies, 'Next page', params: { genre_id: @genre_id } %>
+  <%= link_to_previous_page @movies, 'Previous page', params: new_page_params %> <%= link_to_next_page @movies, 'Next page', params: new_page_params %>
 </p>

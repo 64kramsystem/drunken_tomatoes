@@ -7,4 +7,13 @@ module MoviesHelper
                                "'&min_year=' + movie_min_year.value"
   end
 
+  def new_page_params
+    {
+      genre_id: @genre_id,
+      sorting_field: @sorting_field,
+      min_rating: @min_rating,
+      min_year: @min_year,
+    }
+  end
+
 end
