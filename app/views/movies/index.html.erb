@@ -56,7 +56,7 @@
         </table>
 	      <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
 	      <br/>
-	      <%= h( movie.title ) %>
+	      <%= "#{ h( movie.title ) } [#{ h( movie.year ) }]" %>
 	    </td>
     <% end %>
   </tr>
