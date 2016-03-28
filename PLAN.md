@@ -7,9 +7,9 @@ FUNCTIONAL
 
 CODE
 ----
-- convert structure.sql to schema.rb
 - convert page linking to :paginate (how to center?)
 - movie movie posters either to separate table
+- add foreign keys
 
 AESTETHIC
 ---------
