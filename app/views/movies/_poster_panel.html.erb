@@ -1,0 +1,14 @@
+          <tr>
+            <td align="center" >
+              <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
+            </td>
+          </tr>
+          <tr>
+            <td align="center">
+              <big><b>
+                <span panel-listener="true">
+                  <%= link_to "#{ h( movie.title ) } [#{ h( movie.year ) }]", movie_path(movie, details: true), method: :get, remote: true %>
+                </span>
+              </b></big>
+            </td>
+          </tr>

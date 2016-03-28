@@ -1,0 +1,24 @@
+          <tr>
+            <td>
+              <small><small>
+                <%= h(movie.synopsis) %><br/>
+
+                <% if movie.directors.any? %>
+                Director: <%= h(movie.directors.map(&:name).join(', ')) %><br/>
+                <% end %>
+
+                <% if trailer = movie.trailers.first %>
+                Trailer: <%= link_to h( trailer.title ), trailer.link %><br/>
+                <% end %>
+              </small></small>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" >
+              <big><b>
+                <span panel-listener="true">
+                  <%= link_to "#{ h( movie.title ) } [#{ h( movie.year ) }]", movie_path(movie, details: false), method: :get, remote: true %>
+                </span>
+              </b></big>
+            </td>
+          </tr>

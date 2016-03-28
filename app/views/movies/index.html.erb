@@ -56,7 +56,7 @@
             </td>
             <td width="33%" align="center">
               <% @annotations.each do | annotation | %>
-              <span id="<%= annotation %>-<%= movie.id %>">
+              <span id="<%= annotation %>-<%= movie.id %>" annotation-listener="true">
                 <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
               </span>
               <% end %>
@@ -68,10 +68,10 @@
   </tr>
   <tr>
     <% movies_row.each do | movie | %>
-	    <td width="33%" align="center" valign="center">
-        <%= image_tag url_for( controller: 'posters', action: 'show', movie_id: movie.id ) %>
-        <br/>
-        <big><b><%= "#{ h( movie.title ) } [#{ h( movie.year ) }]" %></b></big>
+	    <td width="33%">
+        <table align="center" id="panel-<%= movie.id%>">
+            <%= render partial: 'poster_panel', locals: { movie: movie } %>
+        </table>
 	    </td>
     <% end %>
   </tr>

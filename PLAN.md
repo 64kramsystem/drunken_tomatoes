@@ -1,9 +1,3 @@
-FUNCTIONAL
-----------
-
-- add quick trailer view
-- add movie informations view
-
 CODE
 ----
 
@@ -13,9 +7,7 @@ CODE
 AESTETHIC
 ---------
 
+- **details panel must be properly (vertically) aligned**
 - normalize poster sizes
 - review on unzoomed browser
 - number of movies per row should be determined by the available width/height
-
-MISC
-----

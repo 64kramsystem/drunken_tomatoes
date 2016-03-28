@@ -37,6 +37,20 @@ class MoviesController < ApplicationController
     @years = YEARS
   end
 
+  def show
+    respond_to do |format|
+      format.js do
+        movie = Movie.find(params[:id])
+
+        partial_name = params[:details] == 'true' ? '_details_panel' : '_poster_panel'
+
+        panel_content = render_to_string(partial_name, layout: false, locals: { movie: movie } )
+
+        render json: { id: params[:id], panel_content: panel_content }, content_type: 'text/json'
+      end
+    end
+  end
+
   def update
     respond_to do |format|
       format.js do
