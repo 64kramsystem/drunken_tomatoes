@@ -27,6 +27,15 @@
       { onchange: js_on_change_link }
     )
   %>
+  <%=
+    min_year_options = @min_year ? { selected: @min_year, include_blank: '(No min year)' } : { prompt: '(No min year)' }
+
+    select(
+      :movie, :min_year, @years,
+      min_year_options,
+      { onchange: js_on_change_link }
+    )
+  %>
 </p>
 
 <table width="100%" cellpadding="5" border="1">

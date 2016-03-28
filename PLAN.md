@@ -1,4 +1,3 @@
 - store default sorting?/optins?/filtering?, in database
-- min/max year
 - convert structure.sql to schema.rb
 - convert page linking to :paginate (how to center?)
