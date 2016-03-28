@@ -34,7 +34,7 @@
             <% @annotations.each do | annotation | %>
             <td>
             <div id="<%= annotation %>-<%= movie.id %>">
-              <%= annotation_link(movie, annotation, movie.attributes[annotation]) %>
+              <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
             </div>
             </td>
             <% end %>

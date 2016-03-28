@@ -1,7 +1,5 @@
 class MoviesController < ApplicationController
 
-  include MoviesHelper
-
   MOVIES_PER_PAGE = 30
 
   SORT_MAPPING = {
@@ -36,7 +34,8 @@ class MoviesController < ApplicationController
 
             movie.update_attributes!(annotation => annotation_value)
 
-            render json: { id: params[:id], annotation: annotation, link: annotation_link(movie, annotation, annotation_value) }, content_type: 'text/json'
+            annotation_link = render_to_string('_annotation_link', layout: false, locals: { movie: movie, annotation: annotation, value: annotation_value } )
+            render json: { id: params[:id], annotation: annotation, link: annotation_link }, content_type: 'text/json'
 
             return
           end
