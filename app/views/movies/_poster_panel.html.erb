@@ -7,7 +7,7 @@
             <td align="center">
               <big><b>
                 <span panel-listener="true">
-                  <%= link_to "#{ h( movie.title ) } [#{ h( movie.year ) }]", movie_path(movie, details: true), method: :get, remote: true %>
+                  <%= link_to "#{ movie.title } [#{ movie.year }]", movie_path(movie, details: true), method: :get, remote: true %>
                 </span>
               </b></big>
             </td>
