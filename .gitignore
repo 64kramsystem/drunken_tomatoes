@@ -3,4 +3,4 @@
 /log/*
 /tmp
 /config/database.yml
-
+/extra/migrate_mysql_to_sqlite.yml
