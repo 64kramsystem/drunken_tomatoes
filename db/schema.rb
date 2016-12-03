@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325214813) do
+ActiveRecord::Schema.define(version: 20161203145138) do
 
   create_table "critics", force: :cascade do |t|
     t.string "url_path", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160325214813) do
   create_table "movies", force: :cascade do |t|
     t.string   "title",                      null: false
     t.text     "synopsis",                   null: false
-    t.integer  "rating",                     null: false
+    t.integer  "rating"
     t.integer  "year",                       null: false
     t.datetime "updated_on",                 null: false
     t.string   "url_path",                   null: false

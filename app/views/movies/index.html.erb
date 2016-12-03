@@ -52,7 +52,7 @@
               <small><%= h(movie.genres.map(&:name).join(', ')) %></small>
             </td>
             <td width="33%" align="center">
-              <big><b><font color="red"><%= movie.rating %></font></b></big>
+              <big><b><font color="red"><%= movie.rating || '-' %></font></b></big>
             </td>
             <td width="33%" align="center">
               <% @annotations.each do | annotation | %>
