@@ -54,8 +54,8 @@
             <td width="33%" align="center">
               <big>
                 <b><font color="red"><%= movie.rating || "-" %></font></b>
-                <% if movie.reviews.count > 0 && movie.reviews.count < 10 %>
-                  (<%= movie.reviews.count %>)
+                <% if movie.general_reviews_count > 0 && movie.general_reviews_count < 10 %>
+                  (<%= movie.general_reviews_count %>)
                 <% end %>
               </big>
             </td>
