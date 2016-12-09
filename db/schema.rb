@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204110320) do
+ActiveRecord::Schema.define(version: 20161209195015) do
+
+  create_table "annotations", force: :cascade do |t|
+    t.boolean "watched",   default: false, null: false
+    t.boolean "ignore",    default: false, null: false
+    t.boolean "watchlist", default: false, null: false
+  end
 
   create_table "critics", force: :cascade do |t|
     t.string "url_path", null: false
@@ -48,16 +54,13 @@ ActiveRecord::Schema.define(version: 20161204110320) do
   add_index "genres_movies", ["movie_id", "genre_id"], name: "index_genres_movies_on_movie_id_and_genre_id", unique: true
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",                                 null: false
-    t.text     "synopsis",                              null: false
+    t.string   "title",                 null: false
+    t.text     "synopsis",              null: false
     t.integer  "rating"
-    t.integer  "year",                                  null: false
-    t.datetime "updated_on",                            null: false
-    t.string   "url_path",                              null: false
-    t.boolean  "watched",               default: false, null: false
-    t.boolean  "ignore",                default: false, null: false
-    t.boolean  "watchlist",             default: false, null: false
-    t.integer  "general_reviews_count",                 null: false
+    t.integer  "year",                  null: false
+    t.datetime "updated_on",            null: false
+    t.string   "url_path",              null: false
+    t.integer  "general_reviews_count", null: false
   end
 
   add_index "movies", ["url_path"], name: "index_movies_on_url_path", unique: true
