@@ -1,5 +1,20 @@
 module MoviesHelper
 
+  MOVIES_PER_PAGE = 30
+
+  SORT_MAPPING = {
+    'Release date' => 'year',
+    'Rating'       => 'rating',
+  }
+
+  ANNOTATIONS = %w[watched watchlist ignore]
+
+  RATINGS = 10.step(100, 10).to_a
+
+  YEARS = 1920.step(Date.today.year / 10 * 10, 10).to_a
+
+  REVIEWS_THRESHOLD = 10
+
   def js_on_change_link
     "document.location = '/movies?genre_id=' + movie_genre_id.value + " +
                                "'&sorting_field=' + sorting_field.value +" +

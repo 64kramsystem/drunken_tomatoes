@@ -14,7 +14,7 @@
     sorting_options = @sorting_field ? { include_blank: '(No sorting)' } : { prompt: '(No sorting)' }
 
     select_tag(
-      :sorting_field, options_for_select( @sort_mapping, @sorting_field ),
+      :sorting_field, options_for_select( MoviesHelper::SORT_MAPPING, @sorting_field ),
       sorting_options.merge( onchange: js_on_change_link )
     )
   %>
@@ -22,7 +22,7 @@
     min_rating_options = @min_rating ? { selected: @min_rating, include_blank: '(No min rating)' } : { prompt: '(No min rating)' }
 
     select(
-      :movie, :min_rating, @ratings,
+      :movie, :min_rating, MoviesHelper::RATINGS,
       min_rating_options,
       { onchange: js_on_change_link }
     )
@@ -31,7 +31,7 @@
     min_year_options = @min_year ? { selected: @min_year, include_blank: '(No min year)' } : { prompt: '(No min year)' }
 
     select(
-      :movie, :min_year, @years,
+      :movie, :min_year, MoviesHelper::YEARS,
       min_year_options,
       { onchange: js_on_change_link }
     )
@@ -54,13 +54,13 @@
             <td width="33%" align="center">
               <big>
                 <b><font color="red"><%= movie.rating || "-" %></font></b>
-                <% if movie.general_reviews_count > 0 && movie.general_reviews_count < @reviews_threshold %>
+                <% if movie.general_reviews_count > 0 && movie.general_reviews_count < MoviesHelper::REVIEWS_THRESHOLD %>
                   (<%= movie.general_reviews_count %>)
                 <% end %>
               </big>
             </td>
             <td width="33%" align="center">
-              <% @annotations.each do | annotation | %>
+              <% MoviesHelper::ANNOTATIONS.each do | annotation | %>
               <span id="<%= annotation %>-<%= movie.id %>" annotation-listener="true">
                 <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
               </span>

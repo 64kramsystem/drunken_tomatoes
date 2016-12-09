@@ -1,19 +1,6 @@
 class MoviesController < ApplicationController
 
-  MOVIES_PER_PAGE = 30
-
-  SORT_MAPPING = {
-    'Release date' => 'year',
-    'Rating'       => 'rating',
-  }
-
-  ANNOTATIONS = %w[watched watchlist ignore]
-
-  RATINGS = 10.step(100, 10).to_a
-
-  YEARS = 1920.step(Date.today.year / 10 * 10, 10).to_a
-
-  REVIEWS_THRESHOLD = 10
+  include MoviesHelper
 
   def index
     page           = int_param( :page ) || 1
@@ -33,12 +20,6 @@ class MoviesController < ApplicationController
     @movies = @movies.order( "#{ @sorting_field } DESC" ) if @sorting_field
 
     @genres = Genre.all
-    @sort_mapping = SORT_MAPPING.clone
-    @annotations = ANNOTATIONS
-    @ratings = RATINGS
-    @years = YEARS
-
-    @reviews_threshold = REVIEWS_THRESHOLD
   end
 
   def show
