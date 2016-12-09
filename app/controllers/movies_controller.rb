@@ -13,6 +13,8 @@ class MoviesController < ApplicationController
 
   YEARS = 1920.step(Date.today.year / 10 * 10, 10).to_a
 
+  REVIEWS_THRESHOLD = 10
+
   def index
     page           = int_param( :page ) || 1
     @genre_id      = int_param( :genre_id )
@@ -35,6 +37,8 @@ class MoviesController < ApplicationController
     @annotations = ANNOTATIONS
     @ratings = RATINGS
     @years = YEARS
+
+    @reviews_threshold = REVIEWS_THRESHOLD
   end
 
   def show
