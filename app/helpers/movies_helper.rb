@@ -13,14 +13,15 @@ module MoviesHelper
 
   YEARS = 1920.step(Date.today.year / 10 * 10, 10).to_a
 
-  REVIEWS_THRESHOLD = 10
+  DEFAULT_MIN_REVIEWS = 10
 
   def js_on_change_link
     "document.location = '/movies?genre_id=' + movie_genre_id.value + " +
                                "'&sorting_field=' + sorting_field.value +" +
                                "'&min_rating=' + movie_min_rating.value +" +
                                "'&min_year=' + movie_min_year.value +" +
-                               "'&watchable=' + movie_watchable.checked"
+                               "'&watchable=' + movie_watchable.checked +" +
+                               "'&min_reviews=' + movie_min_reviews.value"
   end
 
   def new_page_params

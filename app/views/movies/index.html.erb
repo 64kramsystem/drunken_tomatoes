@@ -40,6 +40,10 @@
   <%=
     check_box( :movie, :watchable, { onchange: js_on_change_link, checked: @watchable } )
   %>
+  Min.reviews:
+  <%=
+    text_field( :movie, :min_reviews, size: 2, value: @min_reviews, onchange: js_on_change_link )
+  %>
 </p>
 
 <table width="100%" border="1">
@@ -52,12 +56,7 @@
               <small><%= h(movie.genres.map(&:name).join(', ')) %></small>
             </td>
             <td width="33%" align="center">
-              <big>
-                <b><font color="red"><%= movie.rating || "-" %></font></b>
-                <% if movie.general_reviews_count > 0 && movie.general_reviews_count < MoviesHelper::REVIEWS_THRESHOLD %>
-                  (<%= movie.general_reviews_count %>)
-                <% end %>
-              </big>
+              <big><b><font color="red"><%= movie.rating || "-" %></font></b></big>
             </td>
             <td width="33%" align="center">
               <% MoviesHelper::ANNOTATIONS.each do | annotation | %>

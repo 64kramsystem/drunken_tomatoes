@@ -9,10 +9,12 @@ class MoviesController < ApplicationController
     @min_rating    = int_param( :min_rating )
     @min_year      = int_param( :min_year )
     @watchable     = boolean_param( :watchable ) || boolean_param( :watchable ).nil?
+    @min_reviews   = int_param( :min_reviews ) || DEFAULT_MIN_REVIEWS
 
     # Note that if `watchable` is selected, we first sort by `watchlist` attribute.
     #
     @movies = Movie.page( page ).per( MOVIES_PER_PAGE )
+    @movies = @movies.where( 'general_reviews_count >= ?', @min_reviews )
     @movies = @movies.joins( :genres ).where( genres: { id: @genre_id } ) if @genre_id
     @movies = @movies.where( 'rating >= ?', @min_rating ) if @min_rating
     @movies = @movies.where( 'year >= ?', @min_year ) if @min_year
