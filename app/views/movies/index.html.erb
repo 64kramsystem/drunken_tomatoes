@@ -61,7 +61,7 @@
             <td width="33%" align="center">
               <% MoviesHelper::ANNOTATIONS.each do | annotation | %>
               <span id="<%= annotation %>-<%= movie.id %>" annotation-listener="true">
-                <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.attributes[annotation] } %>
+                <%= render partial: 'annotation_link', locals: { movie: movie, annotation: annotation, value: movie.annotation.attributes.fetch(annotation) } %>
               </span>
               <% end %>
             </td>
