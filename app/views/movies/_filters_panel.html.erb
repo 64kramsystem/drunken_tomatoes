@@ -1,4 +1,8 @@
 <p align="center">
+  Title:
+  <%=
+    text_field( :movie, :title_pattern, size: 16, value: @title_pattern, onchange: js_on_change_link )
+  %>
   <%=
     genre_options = @genre_id ? { selected: @genre_id, include_blank: '(No genre)' } : { prompt: '(No genre)' }
 

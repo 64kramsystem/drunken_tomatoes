@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
 
   def index
     page           = int_param( :page ) || 1
+    @title_pattern = params[ :title_pattern ]
     @genre_id      = int_param( :genre_id )
     @sorting_field = whitelist_param( :sorting_field, SORT_MAPPING.values ) || DEFAULT_SORTING
     @min_rating    = int_param( :min_rating )
@@ -14,6 +15,7 @@ class MoviesController < ApplicationController
     # Note that if `watchable` is selected, we first sort by `watchlist` attribute.
     #
     @movies = Movie.page( page ).per( MOVIES_PER_PAGE )
+    @movies = @movies.where( 'title LIKE ?', "%#{@title_pattern}%") if @title_pattern
     @movies = @movies.where( 'general_reviews_count >= ?', @min_reviews )
     @movies = @movies.joins( :genres ).where( genres: { id: @genre_id } ) if @genre_id
     @movies = @movies.where( 'rating >= ?', @min_rating ) if @min_rating

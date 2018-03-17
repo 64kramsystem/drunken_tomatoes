@@ -1,6 +1,6 @@
 <h1 align="center">Movies</h1>
 
-<%= render partial: 'filters_panel', locals: { genre: @genre, sorting_field: @sorting_field, min_rating: @min_rating, min_year: @min_year, watchable: @watchable, min_reviews: @min_reviews } %>
+<%= render partial: 'filters_panel', locals: { title_pattern: @title_pattern, genre: @genre, sorting_field: @sorting_field, min_rating: @min_rating, min_year: @min_year, watchable: @watchable, min_reviews: @min_reviews } %>
 
 <table width="100%" border="1">
   <% @movies.each_slice( 3 ) do | movies_row | %>
