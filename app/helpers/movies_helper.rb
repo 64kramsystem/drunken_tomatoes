@@ -14,6 +14,7 @@ module MoviesHelper
   YEARS = 1920.step(Date.today.year / 10 * 10, 10).to_a
 
   DEFAULT_MIN_REVIEWS = 10
+  DEFAULT_SORTING = SORT_MAPPING.fetch('Release date')
 
   def js_on_change_link
     "document.location = '/movies?genre_id=' + movie_genre_id.value + " +

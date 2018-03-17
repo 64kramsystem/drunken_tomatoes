@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     page           = int_param( :page ) || 1
     @genre_id      = int_param( :genre_id )
-    @sorting_field = whitelist_param( :sorting_field, SORT_MAPPING.values )
+    @sorting_field = whitelist_param( :sorting_field, SORT_MAPPING.values ) || DEFAULT_SORTING
     @min_rating    = int_param( :min_rating )
     @min_year      = int_param( :min_year )
     @watchable     = boolean_param( :watchable ) || boolean_param( :watchable ).nil?
