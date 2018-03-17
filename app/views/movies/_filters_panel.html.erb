@@ -1,0 +1,49 @@
+<p align="center">
+  Title:
+  <%=
+    text_field( :movie, :title_pattern, size: 16, value: @title_pattern, onchange: js_on_change_link )
+  %>
+  <%=
+    genre_options = @genre_id ? { selected: @genre_id, include_blank: '(No genre)' } : { prompt: '(No genre)' }
+
+    collection_select(
+      :movie, :genre_id, @genres, :id, :name,
+      genre_options,
+      { onchange: js_on_change_link }
+    )
+  %>
+  <%=
+    sorting_options = @sorting_field ? { include_blank: '(No sorting)' } : { prompt: '(No sorting)' }
+
+    select_tag(
+      :sorting_field, options_for_select( MoviesHelper::SORT_MAPPING, @sorting_field ),
+      sorting_options.merge( onchange: js_on_change_link )
+    )
+  %>
+  <%=
+    min_rating_options = @min_rating ? { selected: @min_rating, include_blank: '(No min rating)' } : { prompt: '(No min rating)' }
+
+    select(
+      :movie, :min_rating, MoviesHelper::RATINGS,
+      min_rating_options,
+      { onchange: js_on_change_link }
+    )
+  %>
+  <%=
+    min_year_options = @min_year ? { selected: @min_year, include_blank: '(No min year)' } : { prompt: '(No min year)' }
+
+    select(
+      :movie, :min_year, MoviesHelper::YEARS,
+      min_year_options,
+      { onchange: js_on_change_link }
+    )
+  %>
+  Watchable:
+  <%=
+    check_box( :movie, :watchable, { onchange: js_on_change_link, checked: @watchable } )
+  %>
+  Min.reviews:
+  <%=
+    text_field( :movie, :min_reviews, size: 2, value: @min_reviews, onchange: js_on_change_link )
+  %>
+</p>

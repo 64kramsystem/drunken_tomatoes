@@ -17,7 +17,8 @@ module MoviesHelper
   DEFAULT_SORTING = SORT_MAPPING.fetch('Release date')
 
   def js_on_change_link
-    "document.location = '/movies?genre_id=' + movie_genre_id.value + " +
+    "document.location = '/movies?title_pattern=' + movie_title_pattern.value + " +
+                               "'&genre_id=' + movie_genre_id.value + " +
                                "'&sorting_field=' + sorting_field.value +" +
                                "'&min_rating=' + movie_min_rating.value +" +
                                "'&min_year=' + movie_min_year.value +" +
@@ -27,6 +28,7 @@ module MoviesHelper
 
   def new_page_params
     {
+      title_pattern: @title_pattern,
       genre_id: @genre_id,
       sorting_field: @sorting_field,
       min_rating: @min_rating,
