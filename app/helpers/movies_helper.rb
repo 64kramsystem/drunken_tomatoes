@@ -15,14 +15,27 @@ module MoviesHelper
   DEFAULT_MIN_REVIEWS = 10
   DEFAULT_SORTING = SORT_MAPPING.fetch("Release date")
 
+  # Output format:
+  #
+  #   "document.location = '/movies' + '?title_pattern=' + movie_title_pattern.value + '&genre_id=' + ..."
+  #
   def js_on_change_link
-    "document.location = '/movies?title_pattern=' + movie_title_pattern.value + " \
-      "'&genre_id=' + movie_genre_id.value + " \
-      "'&sorting_field=' + sorting_field.value +" \
-      "'&min_rating=' + movie_min_rating.value +" \
-      "'&min_year=' + movie_min_year.value +" \
-      "'&watchable=' + movie_watchable.checked +" \
-      "'&min_reviews=' + movie_min_reviews.value"
+    link_params = {
+      'title_pattern' => 'movie_title_pattern.value',
+      'genre_id' => 'movie_genre_id.value',
+      'sorting_field' => 'sorting_field.value',
+      'min_rating' => 'movie_min_rating.value',
+      'min_year' => 'movie_min_year.value',
+      'watchable' => 'movie_watchable.checked',
+      'min_reviews' => 'movie_min_reviews.value',
+    }
+
+    link_param_strings = link_params.each_with_index.map do |(field, value), i|
+      separator = i == 0 ? "?" : "&"
+      "'#{separator}#{field}=' + #{value}"
+    end
+
+    "document.location = '/movies' + " + link_param_strings.join(" + ")
   end
 
   def new_page_params
