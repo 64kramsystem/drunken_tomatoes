@@ -1,5 +1,4 @@
 class AddAnnotationsTable < ActiveRecord::Migration
-
   def change
     create_table :annotations do |t|
       t.boolean  :watched,   default: false, null: false
@@ -7,5 +6,4 @@ class AddAnnotationsTable < ActiveRecord::Migration
       t.boolean  :watchlist, default: false, null: false
     end
   end
-
 end
