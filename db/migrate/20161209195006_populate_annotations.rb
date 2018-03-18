@@ -1,4 +1,4 @@
-class PopulateAnnotations < ActiveRecord::Migration
+class PopulateAnnotations < ActiveRecord::Migration[5.0]
   def change
     sql = "
       INSERT INTO annotations(id, watched, ignore, watchlist)
