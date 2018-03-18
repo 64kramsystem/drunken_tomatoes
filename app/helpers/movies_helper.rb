@@ -35,4 +35,19 @@ module MoviesHelper
       watchable: @watchable,
     }
   end
+
+  private
+
+  # Returns [annotation, true/false] if there is an annotation in the params.
+  #
+  def extract_annotation_from_params
+    ANNOTATIONS.each do |annotation|
+      if params.key?(annotation) && %(true false).include?(params[annotation])
+        annotation_value = params[annotation] == "true"
+        return [annotation, annotation_value]
+      end
+    end
+
+    nil
+  end
 end

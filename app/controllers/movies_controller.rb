@@ -42,21 +42,19 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       format.js do
-        ANNOTATIONS.each do |annotation|
-          if params.key?(annotation) && %(true false).include?(params[annotation])
-            movie = Movie.find(params[:id])
-            annotation_value = params[annotation] == "true"
+        annotation, annotation_value = extract_annotation_from_params
 
-            movie.annotation.update_attributes!(annotation => annotation_value)
+        if annotation
+          movie = Movie.find(params[:id])
+          movie.annotation.update_attributes!(annotation => annotation_value)
 
-            annotation_link = render_to_string("_annotation_link", layout: false, locals: {movie: movie, annotation: annotation, value: annotation_value})
-            render json: {id: params[:id], annotation: annotation, link: annotation_link}, content_type: "text/json"
+          annotation_link_locals = {movie: movie, annotation: annotation, value: annotation_value}
+          annotation_link = render_to_string("_annotation_link", layout: false, locals: annotation_link_locals)
 
-            return
-          end
+          render json: {id: params[:id], annotation: annotation, link: annotation_link}, content_type: "text/json"
+        else
+          head :ok
         end
-
-        head :ok
       end
     end
   end
