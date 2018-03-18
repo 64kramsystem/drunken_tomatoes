@@ -1,0 +1,93 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'config/routes.rb'
+    - 'db/schema.rb'
+
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'bin/*'
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/*'
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/Encoding:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/ExpandPathArguments:
+  Exclude:
+    - 'Rakefile'
+    - 'bin/*'
+    - 'config/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'config.ru'
+    - 'db/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/WordArray:
+  EnforcedStyle: percent
+  MinSize: 3
+  Exclude:
+    - 'db/schema.rb'

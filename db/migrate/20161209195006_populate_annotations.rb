@@ -1,5 +1,4 @@
 class PopulateAnnotations < ActiveRecord::Migration
-
   def change
     sql = "
       INSERT INTO annotations(id, watched, ignore, watchlist)
@@ -9,5 +8,4 @@ class PopulateAnnotations < ActiveRecord::Migration
 
     connection.update(sql)
   end
-
 end
