@@ -10,6 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+// Note that:
+// - `jquery{_ujs}` must be required before the others
+// - if `rails-ujs` is left, AJAX requests are performed twice (!)
+//
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
