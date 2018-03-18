@@ -1,4 +1,4 @@
-class AddAnnotationsTable < ActiveRecord::Migration
+class AddAnnotationsTable < ActiveRecord::Migration[5.0]
   def change
     create_table :annotations do |t|
       t.boolean  :watched,   default: false, null: false

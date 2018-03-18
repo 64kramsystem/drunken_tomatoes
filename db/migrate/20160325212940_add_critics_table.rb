@@ -1,4 +1,4 @@
-class AddCriticsTable < ActiveRecord::Migration
+class AddCriticsTable < ActiveRecord::Migration[5.0]
   def change
     create_table :critics do |t|
       t.string :url_path, limit: 60, null: false
