@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     # Note that if `watchable` is selected, we first sort by `watchlist` attribute.
     #
     @movies = Movie.page( page ).per( MOVIES_PER_PAGE )
-    @movies = @movies.where( 'title LIKE ?', "%#{@title_pattern}%") if @title_pattern
+    @movies = @movies.where( 'title LIKE ?', "%#{@title_pattern.strip}%") if @title_pattern
     @movies = @movies.where( 'general_reviews_count >= ?', @min_reviews )
     @movies = @movies.joins( :genres ).where( genres: { id: @genre_id } ) if @genre_id
     @movies = @movies.where( 'rating >= ?', @min_rating ) if @min_rating
