@@ -4,5 +4,5 @@ $(document).on 'ajax:success', 'span[annotation-listener]', (status,data,xhr)->
 $(document).on 'ajax:success', 'span[panel-listener]', (status,data,xhr)->
   $("#panel-#{ data.id }").html(data.panel_content)
 
-$(document).bind 'keydown', 'alt+t', ()->
+Mousetrap.bind 'alt+t', (e)->
   document.getElementById("movie_title_pattern").focus()
