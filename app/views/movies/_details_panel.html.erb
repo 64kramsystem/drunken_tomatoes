@@ -1,16 +1,14 @@
           <tr>
             <td>
-              <small><small>
-                <%= h(movie.synopsis) %><br/>
+              <%= h(movie.synopsis) %><br/>
 
-                <% if movie.directors.any? %>
-                Director: <%= h(movie.directors.map(&:name).join(', ')) %><br/>
-                <% end %>
+              <% if movie.directors.any? %>
+              Director: <%= h(movie.directors.map(&:name).join(', ')) %><br/>
+              <% end %>
 
-                <% if trailer = movie.trailers.first %>
-                Trailer: <%= link_to h( trailer.title ), trailer.link %><br/>
-                <% end %>
-              </small></small>
+              <% if trailer = movie.trailers.first %>
+              Trailer: <%= link_to h( trailer.title ), trailer.link %><br/>
+              <% end %>
             </td>
           </tr>
           <tr>
