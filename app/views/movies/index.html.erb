@@ -2,7 +2,7 @@
 
 <%= render partial: 'filters_panel', locals: { title_pattern: @title_pattern, genre: @genre, sorting_field: @sorting_field, min_rating: @min_rating, min_year: @min_year, watchable: @watchable, min_reviews: @min_reviews } %>
 
-<table width="100%" border="1">
+<table width="100%" border="1" height="100%">
   <% @movies.each_slice( 3 ) do | movies_row | %>
     <% movies_row.each do | movie | %>
       <td width="33%">
@@ -29,7 +29,7 @@
   <tr>
     <% movies_row.each do | movie | %>
 	    <td width="33%">
-        <table align="center" id="panel-<%= movie.id%>">
+        <table align="center" id="panel-<%= movie.id%>" height="100%">
             <%= render partial: 'poster_panel', locals: { movie: movie } %>
         </table>
 	    </td>
