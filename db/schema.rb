@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 20161209195015) do
     t.string   "title",                 null: false
     t.text     "synopsis",              null: false
     t.integer  "rating"
-    t.integer  "year",                  null: false
     t.datetime "updated_on",            null: false
     t.string   "url_path",              null: false
     t.integer  "general_reviews_count", null: false
+    t.string   "first_release_date",    null: false
   end
 
   add_index "movies", ["url_path"], name: "index_movies_on_url_path", unique: true

@@ -9,4 +9,8 @@ class Movie < ActiveRecord::Base
   delegate :watched,   to: :annotation
   delegate :ignore,    to: :annotation
   delegate :watchlist, to: :annotation
+
+  def year
+    first_release_date[0, 4].to_i
+  end
 end
