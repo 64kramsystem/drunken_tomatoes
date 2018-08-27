@@ -2,7 +2,7 @@ module MoviesHelper
   MOVIES_PER_PAGE = 30
 
   SORT_MAPPING = {
-    "Release date" => "year",
+    "Release date" => "first_release_date",
     "Rating"       => "rating",
   }.freeze
 
