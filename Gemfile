@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-rails', '~> 4.3.1'
-gem 'kaminari', '~> 0.16.3'
+gem 'kaminari', '~> 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
