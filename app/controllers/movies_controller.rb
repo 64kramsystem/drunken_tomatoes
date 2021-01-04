@@ -46,7 +46,7 @@ class MoviesController < ApplicationController
 
         if annotation
           movie = Movie.find(params[:id])
-          movie.annotation.update_attributes!(annotation => annotation_value)
+          movie.annotation.update!(annotation => annotation_value)
 
           annotation_link_locals = {movie: movie, annotation: annotation, value: annotation_value}
           annotation_link = render_to_string("_annotation_link", layout: false, locals: annotation_link_locals)
