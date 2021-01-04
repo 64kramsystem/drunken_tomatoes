@@ -18,12 +18,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_215235) do
     t.boolean "watchlist", default: false, null: false
   end
 
-  create_table "annotations_bak", force: :cascade do |t|
-    t.boolean "watched", default: false, null: false
-    t.boolean "ignore", default: false, null: false
-    t.boolean "watchlist", default: false, null: false
-  end
-
   create_table "critics", force: :cascade do |t|
     t.string "url_path", null: false
     t.string "name", null: false
