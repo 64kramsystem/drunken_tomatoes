@@ -4,12 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config and Gemfile.lock.
+# Ignore bundler config.
 /.bundle
-/Gemfile.lock
 
-# Ignore the database configuration and the default SQLite database.
-/config/database.yml
+# Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
@@ -19,11 +17,9 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development
+# Ignore uploaded files in development.
 /storage/*
-
-/node_modules
-/yarn-error.log
+!/storage/.keep
 
 /public/assets
 .byebug_history
@@ -31,5 +27,15 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Customizations
+/Gemfile.lock
+/config/database.yml
 /.ruby-version
 /.ruby-gemset
