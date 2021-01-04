@@ -36,6 +36,6 @@ yarn-debug.log*
 
 # Customizations
 /Gemfile.lock
+/yarn.lock
 /config/database.yml
 /.ruby-version
-/.ruby-gemset
